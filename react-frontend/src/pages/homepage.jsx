@@ -1,7 +1,17 @@
 import './homepage.css';
 import { Container, Nav, Navbar, Table } from 'react-bootstrap';
+import { ethers } from 'ethers';
+import React, { useState } from 'react';
+
+
+const chainworkAddress = "0x8A1CBd93Cc18273011eF432fDAcfa0659E4D3718"
 
 export function HomePage() {
+
+    const [jobPosts, setJobPosts] = useState
+
+
+
     return (
         <>
         <Navbar bg="dark" variant="dark">
