@@ -5,6 +5,7 @@ contract ChainWork {
 
     address payable jobPosterAddress;
     address payable workerAddress;
+    uint public jobIdCount;
 
     struct Job {
         uint jobId;
@@ -19,8 +20,9 @@ contract ChainWork {
         return jobPosts[_jobId];
     }
 
-    function createWork(uint _jobId, string memory _jobDescription, uint256 _pay) external {
-        jobPosts[_jobId] = Job(_jobId, _jobDescription, _pay, false);
+    function createWork(string memory _jobDescription, uint256 _pay) external {
+        jobPosts[jobIdCount] = Job(jobIdCount, _jobDescription, _pay, false);
+        jobIdCount++;
     }
 
     function approveWork(uint _jobId, address payable _workerAddress) external {

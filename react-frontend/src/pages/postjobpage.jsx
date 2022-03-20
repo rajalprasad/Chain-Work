@@ -1,7 +1,10 @@
-import { NavBar } from "../components/navbar"
+import PostJobForm from "../components/postjobform"
 
 export function PostJobPage() {
     return (
-        <NavBar />
+        <>
+            <PostJobForm />
+        </>
     )
+        
 }

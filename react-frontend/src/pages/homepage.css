@@ -1,14 +1,7 @@
-.Title {
-    background-color: rgb(107, 255, 186);
-    height: 3.5rem;
-    text-align: center;
-    font-size: 3rem;
-    color: black;
-    margin: 1rem;
-}
+/* //mt-4 p-5 bg-success text-white rounded */
 
-.Jobs {
-    background-color: rgb(210, 255, 240);
-    margin: 1rem;
-    width: 25rem;
+.welcome {
+    text-decoration: none;
+    background-color: orange;
+    padding: 1rem;
 }

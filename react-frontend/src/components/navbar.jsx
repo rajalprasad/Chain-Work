@@ -1,17 +1,20 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import "./navbar.css";
 
 export function NavBar() {
     return (
         <>
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="/">Chain-Work</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href='/Jobs'>Jobs</Nav.Link>
-                    <Nav.Link href='/PostJob'>Post Job</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+            <ul>
+                <li>
+                    <Link to="/">Chain-Link</Link>
+                </li>
+                <li>
+                    <Link to="/Jobs">Jobs</Link>
+                </li>
+                <li>
+                    <Link to="/PostJob">Post Job</Link>
+                </li>
+            </ul>
         </>
     )
 }

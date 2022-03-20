@@ -7,9 +7,9 @@ describe("Chain-Work", function () {
     const cw = await CW.deploy();
     await cw.deployed();
 
-    const job1 = await cw.createWork(1, "Create NFT", 1);
+    const job1 = await cw.createWork("Create NFT", 1);
     await job1.wait();
-    const jobResult = await cw.getJobPost(1);
+    const jobResult = await cw.getJobPost(0);
     const jd = (jobResult.jobDescription);
     expect(jd).to.equal("Create NFT");
   });

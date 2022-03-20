@@ -3,7 +3,7 @@ import './homepage.css';
 // import { ethers } from 'ethers';
 // import React, { useState, useEffect } from 'react';
 // import chainworkJSON from '../utils/ChainWork.json';
-import { NavBar } from '../components/navbar';
+
 
 // const chainworkAddress = "0x8A1CBd93Cc18273011eF432fDAcfa0659E4D3718";
 
@@ -39,8 +39,7 @@ export function HomePage() {
 
     return (
         <>
-            <NavBar />
-            <div class="mt-4 p-5 bg-success text-white rounded">
+            <div className="welcome">
                 <h1>Welcome to Chain-Work!</h1>
                 <p>A decentralized workplace environment.</p>
                 <p>Click on Jobs or Post Job to begin.</p>
