@@ -1,7 +1,8 @@
-import { ethers, providers } from 'ethers';
-import React, { useState, useEffect } from 'react';
+import "./postjobform.css";
+import { ethers } from 'ethers';
+import React from 'react';
 import chainworkJSON from '../utils/ChainWork.json';
-import "./postjobform.css"
+import { addJobToDB } from '../utils/firebase';
 
 const chainworkAddress = "0xAd3094FEad350EACa7F8B925b28aa27C7518be5C";
 
@@ -17,28 +18,30 @@ export default function PostJobForm() {
         console.log("MetaMask is not installed.");
     }
     
-    async function postJob(jobDescription, pay) {
+    async function postJob() {
+
+        const jobDescription = document.getElementById("jobd").value;
+        const pay = document.getElementById("pay").value;
+
+        // Add to db and get id of entry
+        const id = await addJobToDB(jobDescription, pay);
+
         const signer = await provider.getSigner();
         const contractInstance = new ethers.Contract(chainworkAddress, chainworkJSON.abi, signer);
-        await contractInstance.createWork(jobDescription, pay);
-        document.getElementById("jobd").value = "";
-        document.getElementById("pay").value = "";
+        await contractInstance.createWork(id, jobDescription, pay);
+
+        document.getElementById('addjob').reset();
     }
 
     return (
         <>
-            <form>
+            <form id='addjob'>
                 <label>Job Description</label>
-                <input className="jdinput" type="text" id="jobd"></input>
+                <input className="jdinput" type="text" name="jobd" id="jobd"></input>
                 <label>Pay in ETH</label>
-                <input type="number" id="pay"></input>
+                <input type="number" name="pay" id="pay"></input>
             </form>
-            <button onClick={() => 
-                postJob(
-                    document.getElementById("jobd").value,
-                    document.getElementById("pay").value
-                )}>Post
-            </button>
+            <button onClick={() => postJob()}>Post</button>
         </>
     )
 }

@@ -6,7 +6,7 @@ export function NavBar() {
         <>
             <ul>
                 <li>
-                    <Link to="/">Chain-Link</Link>
+                    <Link to="/">Chain-Work</Link>
                 </li>
                 <li>
                     <Link to="/Jobs">Jobs</Link>
