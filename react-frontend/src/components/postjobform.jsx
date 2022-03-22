@@ -4,7 +4,7 @@ import React from 'react';
 import chainworkJSON from '../utils/ChainWork.json';
 import { addJobToDB } from '../utils/firebase';
 
-const chainworkAddress = "0xAd3094FEad350EACa7F8B925b28aa27C7518be5C";
+const chainworkAddress = "0x82a2607DEecC3496e6963da4619b1e89c941013E";
 
 export default function PostJobForm() {
 
@@ -22,13 +22,15 @@ export default function PostJobForm() {
 
         const jobDescription = document.getElementById("jobd").value;
         const pay = document.getElementById("pay").value;
+        const nullWorkerAddress = "0x0000000000000000000000000000000000000000";
 
         // Add to db and get id of entry
-        const id = await addJobToDB(jobDescription, pay);
+        const id = await addJobToDB(jobDescription, pay, nullWorkerAddress);
 
         const signer = await provider.getSigner();
         const contractInstance = new ethers.Contract(chainworkAddress, chainworkJSON.abi, signer);
-        await contractInstance.createWork(id, jobDescription, pay);
+        
+        await contractInstance.createWork(id, jobDescription, pay, nullWorkerAddress);
 
         document.getElementById('addjob').reset();
     }
